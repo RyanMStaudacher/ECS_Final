@@ -32,13 +32,13 @@ public class PlayerMovement : MonoBehaviour
 	// Update is called once per frame
 	void Update ()
     {
-        PlayerLookAround();
         ControlPlayer();
     }
 
     private void FixedUpdate()
     {
         MovePlayer();
+        PlayerLookAround();
     }
 
     void PlayerLookAround()
@@ -61,7 +61,7 @@ public class PlayerMovement : MonoBehaviour
     
     public void MovePlayer()
     {
-        Vector3 playerMoveLeftRight = transform.right * Input.GetAxis("Horizontal") * currentMoveSpeed * Time.deltaTime;
+        Vector3 playerMoveLeftRight = transform.right * Input.GetAxis("Horizontal") * (currentMoveSpeed / 1.4f) * Time.deltaTime;
         Vector3 playerMoveForwardBackward = transform.forward * Input.GetAxis("Vertical") * currentMoveSpeed * Time.deltaTime;
 
         playerController.SimpleMove(playerMoveLeftRight);
